@@ -280,6 +280,12 @@
 
     </div>
 
+    <!-- Audio element for background music -->
+    <audio id="backgroundMusic" loop>
+        <source src="yung_kai_-_blue_Official_Audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <script>
         // --- Start Screen Logic ---
         const startButton = document.getElementById('startButton');
@@ -288,11 +294,14 @@
         const movingButton = document.getElementById('movingButton');
         const animationContainer = document.getElementById('animationContainer');
         const pugImage = document.getElementById('pugImage'); // Get the pug image
+        const backgroundMusic = document.getElementById('backgroundMusic'); // Get audio element
+
 
         startButton.addEventListener('click', () => {
             startScreen.style.display = 'none';
             container.style.display = 'flex';
             movingButton.style.display = 'block';
+            backgroundMusic.play(); // Start playing the music
         });
 
         // --- Moving Button Logic ---
