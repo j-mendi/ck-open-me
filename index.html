@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For my valentine</title>
+    <style>
+        /* Button and Container styles */
+        #movingButton {
+            position: absolute;
+            padding: 15px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            top: 50px;
+            left: 50px;
+            display: none;
+            z-index: 10;
+        }
+
+        #movingButton:hover {
+            background-color: #d64584;
+        }
+
+        #container {
+            /* Full-screen container */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f8e0e6;
+            display: none;
+            /* Center content */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .message-container {
+            text-align: center;
+            animation: fadeIn 2s ease-out forwards;
+            display: none;
+            margin-bottom: 20px;
+            max-width: 80%;
+            z-index: 5;
+            position: relative;
+        }
+
+        .message {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .message-image {
+            max-width: 80%;
+            max-height: 70vh;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Start Screen Styles */
+        #startScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f8e0e6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #startTitle {
+            font-size: 48px;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #startButton {
+            padding: 20px 40px;
+            font-size: 24px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #startButton:hover {
+            background-color: #d64584;
+        }
+
+        /* Animation Container */
+        #animationContainer {
+            display: none;
+            /* Initially hidden */
+            position: absolute;
+            /* Position within the container */
+            top: 50%;
+            /* Center vertically */
+            left: 50%;
+            /* Center horizontally */
+            transform: translate(-50%, -50%);
+            /* Perfect centering */
+            z-index: 15;
+            /*  Higher z-index than button and messages*/
+            width: 300px;
+            /* Set a size for the container */
+            height: 300px;
+            text-align: center;
+            /* Center the text */
+
+        }
+
+        /* Style for individual images within the animation container */
+        #animationContainer #pugImage {
+            /* Target #pugImage specifically */
+            position: absolute;
+            /* Absolute positioning within the container */
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* Take up full container width */
+            height: 100%;
+            /* Take up full container height */
+            object-fit: contain;
+            /* Ensure images fit within the container */
+            opacity: 0;
+            /* Initially invisible for fade-in */
+            z-index: 20;
+        }
+
+        #animationContainer .message {
+            position: relative;
+            /* Use relative positioning for the text */
+            z-index: 25;
+            /* Ensure text is on top of the image */
+            color: black;
+            /*  Choose a visible color */
+            font-size: 1.2em;
+            /* Adjust font size if needed */
+        }
+
+        /* Pug and Flower Animation */
+        @keyframes pugAndFlower {
+            0% {
+                transform: scale(0.8) rotate(-20deg);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.2) rotate(20deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInImage {
+
+            /* Separate fade-in animation */
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Start Screen -->
+    <div id="startScreen">
+        <h1 id="startTitle">dear carisse</h1>
+        <p style="font-family: 'Courier New', Courier, monospace; font-weight: bold;">keep clicking on the button for
+            more loving messages!</p>
+        <button id="startButton">Start</button>
+    </div>
+
+    <!-- Main App Container (Initially Hidden) -->
+    <div id="container">
+        <button id="movingButton">more love!</button>
+
+        <!-- Message Containers (Include Image) -->
+        <div id="message1" class="message-container">
+            <div class="message">
+                When I first met you 2+ years ago, I thought that you were really cute and fun to hang out with
+            </div>
+            <img src="AgADLwgAAl5vqVY.png" alt="Image 1" class="message-image">
+        </div>
+        <div id="message2" class="message-container">
+            <div class="message">
+                Your personality, the way you'd smile and the fact that I felt comfortable around you
+                made me want to be closer to you.
+            </div>
+            <img src="AgADdQoAAuSGaFY.png" alt="Image 2" class="message-image">
+        </div>
+        <div id="message3" class="message-container">
+            <div class="message">
+                I knew you didn't know whether I liked you or not hehe. I remember the first
+                time we hugged at euston station to say goodbye. I was actually rly nervous when i asked u but it was
+                because
+                I really wanted to hug you
+            </div>
+            <img src="AgAD3AQAAspLsUc.gif" alt="Image 3" class="message-image">
+        </div>
+        <div id="message4" class="message-container">
+            <div class="message">
+                I remembered our silly messages when we were getting to know each other and started hanging out a lot. I
+                loved seeing
+                your cute goofy side. our little chopstick head creation (and how she wld mikesully through her
+                lectures)
+            </div>
+            <img src="AgADLgAD0lbNNw.png" alt="Image 4" class="message-image">
+        </div>
+        <div id="message5" class="message-container">
+            <div class="message">
+                I love you so much that I will continue to rush over to you no matter how late it is or how far
+                you are.
+            </div>
+            <img src="AgAD-AMAApQ8qVY.png" alt="Image 5" class="message-image">
+        </div>
+        <div id="message6" class="message-container">
+            <div class="message">
+                It's crazy how you've grown in the past few years and I am so proud of you and your
+                accomplishments. I
+                will continue to be by your side carisse (aka the cutest girl in the world, aka pug pug):))
+            </div>
+            <img src="AgADsQMAAo2KqVY.png" alt="Image 6" class="message-image">
+        </div>
+        <div id="message7" class="message-container">
+            <div class="message">
+                Now I have the privilege of calling you my girlfriend, getting to eat yummy meals together, watching
+                shows together and
+                getting to spend every night with you!!! i love you so much
+            </div>
+            <img src="AgADQQoAAq1eoFA.gif" alt="Image 7" class="message-image">
+        </div>
+
+        <!-- Animation Container -->
+        <div id="animationContainer">
+            <img src="flower-pug.avif" alt="Pug" id="pugImage"> <!-- Corrected image ID -->
+            <div class="message"> happy valentines day my love! see you at dinner later!
+                by flowery pug </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        // --- Start Screen Logic ---
+        const startButton = document.getElementById('startButton');
+        const startScreen = document.getElementById('startScreen');
+        const container = document.getElementById('container');
+        const movingButton = document.getElementById('movingButton');
+        const animationContainer = document.getElementById('animationContainer');
+        const pugImage = document.getElementById('pugImage'); // Get the pug image
+
+        startButton.addEventListener('click', () => {
+            startScreen.style.display = 'none';
+            container.style.display = 'flex';
+            movingButton.style.display = 'block';
+        });
+
+        // --- Moving Button Logic ---
+        const messageContainers = document.querySelectorAll('.message-container');
+        let clickCount = 0;
+        let animationShown = false;
+        let animationTimeout;
+
+        movingButton.addEventListener('click', () => {
+            clickCount++;
+
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
+            const buttonWidth = movingButton.offsetWidth;
+            const buttonHeight = movingButton.offsetHeight;
+
+            const maxLeft = containerWidth - buttonWidth;
+            const maxTop = containerHeight - buttonHeight;
+
+            const randomLeft = Math.floor(Math.random() * maxLeft);
+            const randomTop = Math.floor(Math.random() * maxTop);
+
+            movingButton.style.left = randomLeft + 'px';
+            movingButton.style.top = randomTop + 'px';
+
+            const messageIndex = Math.floor((clickCount - 1) / 5);
+            messageContainers.forEach(msgCont => msgCont.style.display = 'none');
+
+
+            if (messageIndex < messageContainers.length) {
+                messageContainers[messageIndex].style.display = 'block';
+            } else if (messageIndex >= messageContainers.length) {
+                messageContainers[messageContainers.length - 1].style.display = 'block';
+
+
+                if (!animationShown) {
+                    animationShown = true;
+                    animationTimeout = setTimeout(() => {
+                        movingButton.style.display = 'none';
+                        messageContainers.forEach(msgCont => msgCont.style.display = 'none');
+                        animationContainer.style.display = 'block';
+                        pugImage.style.animation = 'pugAndFlower 1.5s ease-in-out forwards, fadeInImage 1.5s ease-in-out forwards';
+
+                    }, 1000);
+                }
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>
